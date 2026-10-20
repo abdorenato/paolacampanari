@@ -80,6 +80,10 @@ a.hotmart-fb.btn{
 }
 a.hotmart-fb.btn:hover{background:var(--gold-soft) !important;transform:translateY(-1px)}
 a.hotmart-fb.btn-lg{font-size:15px !important;padding:17px 40px !important}
+/* Slot do CTA: se o widget da Hotmart remover o link, o script injeta um link direto aqui */
+.cta-slot{display:inline-block}
+.cta-slot.full{display:block;width:100%}
+.cta-slot.full .btn{width:100%}
 
 /* ===== NAV ===== */
 nav.top{position:fixed;top:0;left:0;right:0;z-index:100;padding:15px 0;background:rgba(8,37,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,167,110,.18)}
@@ -268,7 +272,7 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
 .sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:120;background:rgba(8,37,26,.96);backdrop-filter:blur(12px);border-top:1px solid rgba(201,167,110,.28);padding:12px 18px;align-items:center;gap:14px}
 .sticky-cta .sc-info{flex:1;min-width:0}
 .sticky-cta .sc-info b{display:block;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--cream);line-height:1.1}
-.sticky-cta .sc-info span{font-size:11.5px;color:var(--gold-soft);letter-spacing:.1em;text-transform:uppercase}
+.sticky-cta .sc-info span{font-size:11px;color:var(--gold-soft);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;display:block}
 .sticky-cta a.btn{flex:none;padding:13px 22px}
 
 /* ===== RESPONSIVO ===== */
@@ -290,8 +294,9 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
   .tl-item{grid-template-columns:72px 1fr;gap:16px}
   .tl-time b{font-size:21px}
   .tl-body{padding-left:24px}
-  .sticky-cta{display:flex}
-  body{padding-bottom:74px}
+  .sticky-cta{display:flex;padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+  /* espaço para a barra fixa vai DENTRO do rodapé, para o verde não ser cortado */
+  footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 }
 @media(max-width:540px){
   .wrap{padding:0 22px}.nav-inner{padding:0 22px}section{padding:64px 0}
@@ -327,10 +332,10 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
     <div class="hero-copy">
       <div class="hero-badge">Imersão presencial · turma única</div>
       <div class="hero-kicker">"Quem é você além do crachá?"</div>
-      <h1>Sem o cargo, sem a empresa,<br>sem o descritivo de trabalho.<br><em class="acc">Quem sobra?</em></h1>
-      <p class="lead">Um dia inteiro, presencial, para transformar a sua trajetória real em posicionamento, autoridade e marca. Marca pessoal começa quando a identidade não depende do cargo.</p>
+      <h1>Um dia para transformar<br>trajetória em <em class="acc">marca</em>.</h1>
+      <p class="lead">Imersão presencial para executivos que já construíram valor real e precisam que o mercado enxergue. Marca pessoal começa quando a identidade não depende do cargo.</p>
       <div class="cta-row">
-        <a onclick="return false;" href="https://pay.hotmart.com/G108114447S?checkoutMode=2&amp;off=2xu9hghx" class="hotmart-fb hotmart__button-checkout btn btn-lg">Garantir minha vaga</a>
+        <span class="cta-slot" data-label="Garantir minha vaga" data-size="lg"><a onclick="return false;" href="https://pay.hotmart.com/G108114447S?checkoutMode=2&amp;off=2xu9hghx" class="hotmart-fb hotmart__button-checkout btn btn-lg">Garantir minha vaga</a></span>
         <a href="#programacao" class="btn btn-outline">Ver a programação</a>
       </div>
       <div class="tagline">Da pessoa ao posicionamento estratégico.</div>
@@ -662,7 +667,7 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
         <li>Almoço incluso</li>
         <li>Grupo reduzido, com atenção individual</li>
       </ul>
-      <a onclick="return false;" href="https://pay.hotmart.com/G108114447S?checkoutMode=2&amp;off=2xu9hghx" class="hotmart-fb hotmart__button-checkout btn btn-lg" style="width:100%">Garantir minha vaga</a>
+      <span class="cta-slot full" data-label="Garantir minha vaga" data-size="lg" data-full="1"><a onclick="return false;" href="https://pay.hotmart.com/G108114447S?checkoutMode=2&amp;off=2xu9hghx" class="hotmart-fb hotmart__button-checkout btn btn-lg" style="width:100%">Garantir minha vaga</a></span>
       <div class="ob-note">Pagamento seguro via Hotmart · cartão de crédito, Pix ou boleto</div>
     </div>
     <div class="scarcity">Turma única, com [[VAGAS]] vagas. As inscrições encerram quando a turma fechar.</div>
@@ -710,7 +715,7 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
   <div class="wrap">
     <h2>Você passou décadas construindo marcas.<br>Agora é a hora de construir a sua.</h2>
     <p>Um sábado. Um grupo pequeno. O método que transforma trajetória em marca, valor e ativos de mercado.</p>
-    <a onclick="return false;" href="https://pay.hotmart.com/G108114447S?checkoutMode=2&amp;off=2xu9hghx" class="hotmart-fb hotmart__button-checkout btn btn-lg">Garantir minha vaga · 14 de novembro</a>
+    <span class="cta-slot" data-label="Garantir minha vaga · 14 de novembro" data-size="lg"><a onclick="return false;" href="https://pay.hotmart.com/G108114447S?checkoutMode=2&amp;off=2xu9hghx" class="hotmart-fb hotmart__button-checkout btn btn-lg">Garantir minha vaga · 14 de novembro</a></span>
   </div>
 </section>
 
@@ -753,9 +758,9 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
 <div class="sticky-cta">
   <div class="sc-info">
     <b>Imersão RESET</b>
-    <span>14 de novembro · sábado</span>
+    <span>14 nov · sábado</span>
   </div>
-  <a onclick="return false;" href="https://pay.hotmart.com/G108114447S?checkoutMode=2&amp;off=2xu9hghx" class="hotmart-fb hotmart__button-checkout btn">Quero minha vaga</a>
+  <span class="cta-slot" data-label="Quero minha vaga"><a onclick="return false;" href="https://pay.hotmart.com/G108114447S?checkoutMode=2&amp;off=2xu9hghx" class="hotmart-fb hotmart__button-checkout btn">Quero minha vaga</a></span>
 </div>
 
 <!-- Hotmart checkout widget -->
@@ -771,6 +776,33 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
     document.head.appendChild(link);
   }
   importHotmart();
+</script>
+
+<!--
+  Rede de proteção do CTA.
+  O widget da Hotmart REMOVE os links .hotmart-fb do DOM quando a oferta está
+  indisponível ou o script falha em carregar — o que deixaria a página sem
+  nenhum botão de compra. Se isso acontecer, injetamos um link direto para o
+  checkout no mesmo lugar. Quando a oferta está ativa, o widget assume e este
+  código não faz nada.
+-->
+<script>
+(function(){
+  var CHECKOUT='https://pay.hotmart.com/G108114447S?checkoutMode=2&off=2xu9hghx';
+  function repor(){
+    document.querySelectorAll('.cta-slot').forEach(function(slot){
+      if(slot.querySelector('a')) return;
+      var a=document.createElement('a');
+      a.href=CHECKOUT; a.target='_blank'; a.rel='noopener';
+      a.className='btn btn-gold'+(slot.dataset.size==='lg'?' btn-lg':'');
+      a.textContent=slot.dataset.label||'Garantir minha vaga';
+      slot.appendChild(a);
+    });
+  }
+  setTimeout(repor,1200);
+  setTimeout(repor,3500);
+  window.addEventListener('load',function(){setTimeout(repor,800)});
+})();
 </script>
 
 <script>
