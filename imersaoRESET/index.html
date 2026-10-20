@@ -13,10 +13,7 @@
   afeta o site em nenhuma hipótese.
 
   DADOS AINDA NÃO DEFINIDOS — procure por "[[" para achar todos:
-    [[PRECO]]        valor do investimento
-    [[PARCELAS]]     parcelamento
     [[LOCAL]]        cidade / bairro
-    [[ENDERECO]]     endereço ou "endereço enviado após a inscrição"
     [[VAGAS]]        número de vagas da turma
   ===========================================================================
 -->
@@ -233,8 +230,10 @@ nav.top .links a:hover{color:var(--cream)}
 .oferta h2.title{color:var(--cream)}
 .oferta-box{max-width:620px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(201,167,110,.35);border-radius:6px;padding:48px 44px;text-align:center}
 .oferta-box .ob-lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px}
+.oferta-box .ob-anchor{font-size:15px;color:var(--muted-cream);margin-bottom:8px}
+.oferta-box .ob-anchor s{color:rgba(245,237,224,.5);text-decoration-thickness:1px}
 .oferta-box .ob-price{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,6vw,62px);font-weight:600;color:var(--cream);line-height:1}
-.oferta-box .ob-parc{font-size:15px;color:var(--muted-cream);margin-top:10px}
+.oferta-box .ob-parc{font-size:15px;color:var(--gold-soft);margin-top:10px}
 .oferta-box .ob-inc{list-style:none;text-align:left;margin:30px 0 32px;border-top:1px solid rgba(201,167,110,.22);padding-top:24px}
 .oferta-box .ob-inc li{font-size:14.5px;color:var(--muted-cream);font-weight:300;padding:8px 0 8px 26px;position:relative}
 .oferta-box .ob-inc li::before{content:"\2713";position:absolute;left:0;color:var(--gold);font-weight:700}
@@ -660,8 +659,9 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
     </div>
     <div class="oferta-box">
       <div class="ob-lbl">Imersão RESET · 14 de novembro</div>
-      <div class="ob-price">[[PRECO]]</div>
-      <div class="ob-parc">[[PARCELAS]]</div>
+      <div class="ob-anchor">De <s>R$ 1.250,00</s> por</div>
+      <div class="ob-price">R$ 997,00</div>
+      <div class="ob-parc">ou em at&eacute; 3x de R$ 332,33</div>
       <ul class="ob-inc">
         <li>Dia completo presencial, das 10h às 16h30</li>
         <li>Os quatro blocos de trabalho conduzidos pela Paola</li>
