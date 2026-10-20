@@ -780,11 +780,19 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
 
 <!--
   Rede de proteção do CTA.
-  O widget da Hotmart REMOVE os links .hotmart-fb do DOM quando a oferta está
-  indisponível ou o script falha em carregar — o que deixaria a página sem
-  nenhum botão de compra. Se isso acontecer, injetamos um link direto para o
-  checkout no mesmo lugar. Quando a oferta está ativa, o widget assume e este
-  código não faz nada.
+
+  O widget.min.js da Hotmart faz um "health check" em
+  api-checkout-vue.hotmart.com/api/version e, se a chamada falhar, roda
+  removeCheckoutButton(): apaga TODO <a href*="hotmart.com"> da página.
+  Esse domínio não resolve mais em DNS (verificado em 20/10/2026), então a
+  checagem falha sempre e os botões são removidos em qualquer página que use
+  esse snippet — não tem relação com a oferta estar publicada ou não.
+  Consequência: o modal fancybox também nunca chega a funcionar, porque os
+  links já foram removidos quando ele tenta se ligar a .hotmart-fb.
+
+  Enquanto a Hotmart não corrigir o script, este guard repõe o link direto
+  para o checkout em cada .cta-slot. Se um dia o endpoint voltar, o widget
+  assume o modal e este código não faz nada.
 -->
 <script>
 (function(){
@@ -799,8 +807,9 @@ footer .copy{padding-top:22px;font-size:12.5px;color:rgba(245,237,224,.5);displa
       slot.appendChild(a);
     });
   }
-  setTimeout(repor,1200);
-  setTimeout(repor,3500);
+  // Repõe várias vezes: o removeCheckoutButton() da Hotmart pode demorar a
+  // disparar se o DNS levar segundos para falhar.
+  [600,1500,3000,6000,9000].forEach(function(t){setTimeout(repor,t)});
   window.addEventListener('load',function(){setTimeout(repor,800)});
 })();
 </script>
